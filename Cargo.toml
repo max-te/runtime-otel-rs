@@ -1,0 +1,18 @@
+[package]
+name = "runtime-otel"
+version = "0.1.0"
+edition = "2021"
+description = "Meter your runtime with OpenTelemetry"
+
+[lib]
+name = "runtime_otel"
+path = "src/lib.rs"
+
+[features]
+default = ["tokio", "memory-stats"]
+
+[dependencies]
+tokio = { version = "1", optional = true, features = ["rt"], default-features = false }
+memory-stats = { version = "1", optional = true, default-features = false }
+opentelemetry = {version =  "*", features = ["metrics"], default-features = false }
+

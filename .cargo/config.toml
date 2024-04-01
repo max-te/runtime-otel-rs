@@ -1,0 +1,2 @@
+[target.'cfg(not(tokio_stable))']
+rustflags = ["--cfg", "tokio_unstable"]
