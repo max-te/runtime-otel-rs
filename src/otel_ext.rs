@@ -1,8 +1,7 @@
 use std::borrow::Cow;
 
 use opentelemetry::metrics::{
-    AsyncInstrument, AsyncInstrumentBuilder, Meter, ObservableCounter, ObservableGauge,
-    Observer,
+    AsyncInstrument, AsyncInstrumentBuilder, Meter, ObservableCounter, ObservableGauge, Observer,
 };
 use opentelemetry::KeyValue;
 
@@ -10,10 +9,7 @@ pub trait MeterBuilderExt<I, M>
 where
     I: AsyncInstrument<M>,
 {
-    fn instrument(
-        &self,
-        name: impl Into<Cow<'static, str>>,
-    ) -> AsyncInstrumentBuilder<'_, I, M>;
+    fn instrument(&self, name: impl Into<Cow<'static, str>>) -> AsyncInstrumentBuilder<'_, I, M>;
 }
 
 impl MeterBuilderExt<ObservableCounter<u64>, u64> for Meter {

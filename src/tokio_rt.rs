@@ -1,7 +1,7 @@
 use opentelemetry::metrics::{CallbackRegistration, Meter};
-use tokio::runtime::Handle;
 use opentelemetry::metrics::{MetricsError, ObservableCounter, ObservableGauge, Observer, Unit};
 use opentelemetry::KeyValue;
+use tokio::runtime::Handle;
 
 use crate::otel_ext::{MeterBuilderExt, ObserverExt};
 
@@ -57,7 +57,10 @@ macro_rules! register_instruments_and_callback {
     };
 }
 
-pub fn register_tokio_metrics(runtime: Handle, meter: &Meter) -> Result<Box<dyn CallbackRegistration>, MetricsError> { 
+pub fn register_tokio_metrics(
+    runtime: Handle,
+    meter: &Meter,
+) -> Result<Box<dyn CallbackRegistration>, MetricsError> {
     register_instruments_and_callback!(
         meter,
         metrics = runtime.metrics() => {
