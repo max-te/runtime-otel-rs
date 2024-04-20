@@ -15,10 +15,7 @@ path = "src/lib.rs"
 default = ["tokio", "memory-stats"]
 
 [dependencies]
-tokio = { version = "1", optional = true, features = [
-    "rt",
-], default-features = false }
+tokio = { version = "1", optional = true, features = ["rt"], default-features = false }
 memory-stats = { version = "1", optional = true, default-features = false }
-opentelemetry = { version = "*", features = [
-    "metrics",
-], default-features = false }
+opentelemetry = { version =  ">=0.21,<0.23", features = ["metrics"], default-features = false }
+
