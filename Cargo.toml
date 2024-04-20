@@ -1,18 +1,24 @@
 [package]
-name = "runtime-otel"
+name = "runtime-otel-metrics"
+authors = ["Maximilian Teegen"]
 version = "0.1.0"
 edition = "2021"
-description = "Meter your runtime with OpenTelemetry"
+description = "Meter your tokio runtime and process memory with OpenTelemetry"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/max-te/runtime-otel-rs"
 
 [lib]
-name = "runtime_otel"
+name = "runtime_otel_metrics"
 path = "src/lib.rs"
 
 [features]
 default = ["tokio", "memory-stats"]
 
 [dependencies]
-tokio = { version = "1", optional = true, features = ["rt"], default-features = false }
+tokio = { version = "1", optional = true, features = [
+    "rt",
+], default-features = false }
 memory-stats = { version = "1", optional = true, default-features = false }
-opentelemetry = {version =  "*", features = ["metrics"], default-features = false }
-
+opentelemetry = { version = "*", features = [
+    "metrics",
+], default-features = false }
